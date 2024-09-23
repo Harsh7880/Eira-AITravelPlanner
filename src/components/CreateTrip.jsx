@@ -1,30 +1,45 @@
 import { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { SELECT_TRAVEL_LIST, SELECT_BUDGET_OPTIONS } from "../utils/constants";
-
+import { SELECT_TRAVEL_LIST, SELECT_BUDGET_OPTIONS, GENERATE_TRIP_PROMPT } from "../utils/constants";
+import toast from "react-hot-toast";
+import { chatSession } from "../service/aiModel";
 const CreateTrip = () => {
 
   const [place,setPlace] = useState();
   const [formData,setFormData] = useState([])
 
-  const handleInputChanges = (name,value) =>{
+  const handleInputChanges =  (name,value) =>{
     setFormData({
       ...formData,
       [name]: value
     })
+
   }
 
   useEffect(()=>{
     console.log(formData);
   },[formData])
 
-  const generateTrip = () =>{
-    if(formData?.noOfDays>10){
-      console.log("Please plan a Trip less than 10 days")
-      return;
-      
+  const generateTrip = async () =>{
+    if(formData?.noOfDays>10 ){
+      toast.error("Please plan a trip less than 10 days")
+
     }
-    console.log(formData);
+    if(!formData?.location || !formData?.noOfPeople || !formData?.budget ){
+      toast.error("Please fill the necessary details.")
+      return;
+    }
+    const finalPrompt = GENERATE_TRIP_PROMPT
+    .replace('{location}', formData?.location.lable)
+    .replace('{noOfDays}', formData?.noOfDays)
+    .replace('{noOfPeople}', formData?.noOfPeople)
+    .replace('{budget}', formData?.budget)
+    .replace('{noOfDays}', formData?.noOfDays)
+
+    console.log(finalPrompt);
+    const result = await chatSession.sendMessage(finalPrompt);
+ 
+    console.log(result.response.text());
   }
   return (
     <div className="my-10 mb-20 px-6 lg:px-56">

@@ -1,0 +1,38 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const genAI = new GoogleGenerativeAI("AIzaSyDqmc9g6r52tR3p7FeXeRwtQuteGqBlvZA");
+
+const model = genAI.getGenerativeModel({
+  model: "gemini-1.5-flash",
+});
+
+const generationConfig = {
+  temperature: 1,
+  topP: 0.95,
+  topK: 64,
+  maxOutputTokens: 8192,
+  responseMimeType: "application/json",
+};
+
+export const chatSession = model.startChat({
+  generationConfig,
+
+  history: [
+    {
+      role: "user",
+      parts: [
+        {
+          text: "Generate Travel Plan for Location: Las Vegas, NV, USA, for 2 Days for 2 People with a Cheap budget, give me Hotels options list with HotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, Place Details, Place Image Url, Geo Coordinates, ticket Pricing, Time travel each of the location for 2 days with each day plan with best time to visit in JSON format.\n\n\n\n\n\n",
+        },
+      ],
+    },
+    {
+      role: "model",
+      parts: [
+        {
+          text: '```json\n{\n  "hotelOptions": [\n    {\n      "hotelName": "The D Las Vegas",\n      "hotelAddress": "301 Fremont Street, Las Vegas, NV 89101",\n      "price": "$50 - $100 per night",\n      "hotelImageUrl": "https://www.theD.com/images/hotel/the-d-exterior-1.jpg",\n      "geoCoordinates": "36.1699, -115.1423",\n      "rating": 4.0,\n      "description": "A downtown casino hotel with a retro vibe, offering affordable rooms, a lively casino, and a rooftop pool."\n    },\n    {\n      "hotelName": "Circus Circus Hotel & Casino",\n      "hotelAddress": "2880 Las Vegas Blvd S, Las Vegas, NV 89109",\n      "price": "$40 - $80 per night",\n      "hotelImageUrl": "https://www.circuscircus.com/content/dam/mgmresorts/circuscircus/images/hotel/hero-circus-circus-hotel-casino-las-vegas-hero.jpg",\n      "geoCoordinates": "36.1162, -115.1734",\n      "rating": 3.5,\n      "description": "A budget-friendly option with a circus theme, featuring a carnival midway, a casino, and a variety of dining options."\n    },\n    {\n      "hotelName": "The Golden Nugget",\n      "hotelAddress": "129 E Fremont St, Las Vegas, NV 89101",\n      "price": "$60 - $120 per night",\n      "hotelImageUrl": "https://www.goldennugget.com/sites/default/files/styles/home-image/public/home-hero-image.jpg",\n      "geoCoordinates": "36.1692, -115.1417",\n      "rating": 4.5,\n      "description": "A historic downtown casino hotel with a luxurious feel, featuring a shark tank, a casino, and a variety of restaurants and bars."\n    }\n  ],\n  "itinerary": {\n    "day1": {\n      "morning": {\n        "time": "9:00 AM - 12:00 PM",\n        "placeName": "Fremont Street Experience",\n        "placeDetails": "A pedestrian-friendly street with a canopy of lights and live entertainment, including street performers, musicians, and a zipline.",\n        "placeImageUrl": "https://www.vegasexperience.com/sites/default/files/styles/hero_image/public/2021-08/Fremont-Street-Experience-Aerial-View-3.jpg",\n        "geoCoordinates": "36.1699, -115.1423",\n        "ticketPricing": "Free",\n        "timeTravel": "15 minutes walk from The D Las Vegas"\n      },\n      "afternoon": {\n        "time": "12:00 PM - 3:00 PM",\n        "placeName": "The Mob Museum",\n        "placeDetails": "A museum dedicated to the history of organized crime in the United States, with exhibits on famous gangsters, prohibition, and the FBI.",\n        "placeImageUrl": "https://www.themobmuseum.org/sites/default/files/styles/hero_image/public/2019-08/mob-museum-exterior-hero.jpg",\n        "geoCoordinates": "36.1692, -115.1435",\n        "ticketPricing": "$25 per person",\n        "timeTravel": "10 minutes walk from Fremont Street Experience"\n      },\n      "evening": {\n        "time": "3:00 PM - 6:00 PM",\n        "placeName": "The Neon Museum",\n        "placeDetails": "A museum showcasing vintage neon signs from Las Vegas, featuring a collection of iconic signs and a tour of the "Neon Boneyard.",\n        "placeImageUrl": "https://www.neonmuseum.org/media/neon-museum-tour-image-1",\n        "geoCoordinates": "36.1376, -115.1547",\n        "ticketPricing": "$20 per person",\n        "timeTravel": "30 minutes drive from The Mob Museum"\n      },\n      "night": {\n        "time": "7:00 PM - 10:00 PM",\n        "placeName": "Free Shows on the Strip",\n        "placeDetails": "Catch free shows on the Las Vegas Strip, such as the Bellagio Fountains, the Mirage Volcano, and the Wynn Lake Show.",\n        "placeImageUrl": "https://www.bellagio.com/content/dam/mgmresorts/bellagio/images/fountains/fountains-hero-image.jpg",\n        "geoCoordinates": "36.1067, -115.1723",\n        "ticketPricing": "Free",\n        "timeTravel": "30 minutes drive from The Neon Museum"\n      }\n    },\n    "day2": {\n      "morning": {\n        "time": "9:00 AM - 12:00 PM",\n        "placeName": "Red Rock Canyon National Conservation Area",\n        "placeDetails": "A scenic area with red rock formations, hiking trails, and stunning views.",\n        "placeImageUrl": "https://www.nps.gov/redr/planyourvisit/images/Red%20Rock%20Canyon%20-%20DSC_0209.jpg",\n        "geoCoordinates": "36.1579, -115.2745",\n        "ticketPricing": "$15 per car",\n        "timeTravel": "30 minutes drive from The Strip"\n      },\n      "afternoon": {\n        "time": "12:00 PM - 3:00 PM",\n        "placeName": "Hoover Dam",\n        "placeDetails": "A historic dam on the Colorado River, offering tours, views, and a glimpse into the engineering marvel.",\n        "placeImageUrl": "https://www.nps.gov/hove/planyourvisit/images/HooverDam_Overlook_002.jpg",\n        "geoCoordinates": "36.0083, -114.9223",\n        "ticketPricing": "$30 per person",\n        "timeTravel": "1 hour drive from Red Rock Canyon"\n      },\n      "evening": {\n        "time": "6:00 PM - 9:00 PM",\n        "placeName": "Downtown Container Park",\n        "placeDetails": "A unique shopping and dining experience with repurposed shipping containers, live music, and a fire-breathing sculpture.",\n        "placeImageUrl": "https://www.downtowncontainerpark.com/images/hero/containerpark-hero-mobile.jpg",\n        "geoCoordinates": "36.1682, -115.1381",\n        "ticketPricing": "Free",\n        "timeTravel": "30 minutes drive from Hoover Dam"\n      }\n    }\n  }\n}\n```\n\n**Explanation of the JSON:**\n\n- **hotelOptions:** This section provides a list of budget-friendly hotel options in Las Vegas. It includes the hotel name, address, price range, image URL, coordinates, rating, and a brief description.\n- **itinerary:** This section outlines a two-day itinerary for two people in Las Vegas on a budget. It breaks down each day into morning, afternoon, evening, and night activities.\n- **placeName:** The name of the attraction or place to visit.\n- **placeDetails:** A brief description of the place, including its main features and activities.\n- **placeImageUrl:** A URL link to an image of the place.\n- **geoCoordinates:** The latitude and longitude coordinates of the place.\n- **ticketPricing:** The estimated price of admission or entry fees, if applicable.\n- **timeTravel:** The approximate travel time from the previous location or from the hotel.\n\n**Note:**\n\n- This itinerary is a suggestion and can be customized based on your preferences and interests.\n- Hotel prices can vary depending on the time of year and availability. \n- It is recommended to book your hotel and attractions in advance, especially during peak season.\n- Consider utilizing public transportation or ride-sharing services to minimize transportation costs. \n',
+        },
+      ],
+    },
+  ],
+});

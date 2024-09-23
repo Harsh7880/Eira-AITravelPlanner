@@ -5,11 +5,13 @@ import './index.css'
 import CreateTrip from './components/CreateTrip.jsx'
 import Navbar from './components/Navbar.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from 'react-hot-toast'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <Toaster/>
        <Navbar />
        <Routes>
         <Route path='/' element={<App />} />
