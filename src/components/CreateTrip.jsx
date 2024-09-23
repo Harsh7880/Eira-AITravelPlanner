@@ -2,11 +2,25 @@ import { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { SELECT_TRAVEL_LIST, SELECT_BUDGET_OPTIONS, GENERATE_TRIP_PROMPT } from "../utils/constants";
 import toast from "react-hot-toast";
-import { chatSession } from "../service/aiModel";
+import { chatSession } from "../service/AIModel";
+import logo from '../assets/logo.svg'
+import { FcGoogle } from "react-icons/fc";
+
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+} from "./ui/dialog"
+import { Button } from "./ui/button";
+import { useGoogleLogin } from "@react-oauth/google";
+
 const CreateTrip = () => {
 
   const [place,setPlace] = useState();
   const [formData,setFormData] = useState([])
+  const [openDialog,setOpenDailog] = useState(false);
 
   const handleInputChanges =  (name,value) =>{
     setFormData({
@@ -20,7 +34,20 @@ const CreateTrip = () => {
     console.log(formData);
   },[formData])
 
+  const login = useGoogleLogin({
+    onSuccess: tokenResponse => console.log(tokenResponse),
+    onError: tokenResponse => console.log(tokenResponse),
+
+  })
+
   const generateTrip = async () =>{
+
+    const user = localStorage.getItem('user');
+    if(!user){
+      setOpenDailog(true);
+      return
+    }
+
     if(formData?.noOfDays>10 ){
       toast.error("Please plan a trip less than 10 days")
 
@@ -60,9 +87,9 @@ const CreateTrip = () => {
               apiKey="AIzaSyCYJiw6Cf4JEQ_ybTzw9iXwBZOtKIKYl3s"
               selectProps={{
                 place,
-                  onChange: (value) => {
+                onChange: (value) => {
                   setPlace(value);
-                  handleInputChanges('location', value);
+                  handleInputChanges("location", value);
                 },
               }}
             />
@@ -73,7 +100,7 @@ const CreateTrip = () => {
             How many days are you planning your trip ?
           </h3>
           <input
-            onChange={(e) => handleInputChanges('noOfDays', e.target.value)}
+            onChange={(e) => handleInputChanges("noOfDays", e.target.value)}
             className="border w-full p-2"
             placeholder="Ex.3"
             type="number"
@@ -87,10 +114,14 @@ const CreateTrip = () => {
           <div className="flex gap-6 mt-6">
             {SELECT_TRAVEL_LIST.map((listItem) => (
               <div
-                
-                onClick={() => handleInputChanges('noOfPeople',listItem.people)}
+                onClick={() =>
+                  handleInputChanges("noOfPeople", listItem.people)
+                }
                 className={`flex flex-col gap-2 shadow-md border rounded-md px-4 py-3 cursor-pointer 
-                  ${formData?.noOfPeople==listItem.people&&'border-black transform scale-105 transition duration-100'}
+                  ${
+                    formData?.noOfPeople == listItem.people &&
+                    "border-black transform scale-105 transition duration-100"
+                  }
                   `}
                 key={listItem.id}
               >
@@ -106,9 +137,12 @@ const CreateTrip = () => {
           <div className="flex gap-6 mt-6">
             {SELECT_BUDGET_OPTIONS.map((listItem) => (
               <div
-              onClick={() => handleInputChanges('budget',listItem.title)}
+                onClick={() => handleInputChanges("budget", listItem.title)}
                 className={`flex flex-col gap-2 shadow-md border rounded-md px-4 py-3 cursor-pointer
-                  ${formData?.budget==listItem.title&&'border-black transform scale-105 transition duration-100'}`}
+                  ${
+                    formData?.budget == listItem.title &&
+                    "border-black transform scale-105 transition duration-100"
+                  }`}
                 key={listItem.id}
               >
                 <h2 className="text-2xl">{listItem.icon}</h2>
@@ -119,11 +153,26 @@ const CreateTrip = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button className="px-5 py-2.5 rounded-lg bg-black text-white font-lg font-medium"
-          onClick={generateTrip}
+          <button
+            className="px-5 py-2.5 rounded-lg bg-black text-white font-lg font-medium"
+            onClick={generateTrip}
           >
             Generate Trip
           </button>
+          <Dialog open={openDialog}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogDescription>
+                 <img className="w-28" src={logo} alt="" />
+                 <h2 className=" font-bold text-lg mt-4">Sign In with Google</h2>
+                 <p className="mt-2">Sign in to the app with Google authentication securely</p>
+              
+                  <Button onClick={login} className='flex font-bold items-center gap-4 w-full mt-4'>Sing in With Google  <FcGoogle className="w-7 h-7" /></Button>
+
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
