@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import ViewTrip from "./components/ViewTrip.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,9 +18,9 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/create-trip" element={<CreateTrip />} />
+          <Route path="/view-trip/:tripId" element={<ViewTrip />} />
         </Routes>
       </BrowserRouter>
     </GoogleOAuthProvider>
-    ;
   </StrictMode>
 );
