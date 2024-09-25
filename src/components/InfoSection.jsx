@@ -4,7 +4,6 @@ import { IoIosSend } from "react-icons/io";
 import { Button } from "./ui/button";
 
 const InfoSection = ({ trip }) => {
-
   return (
     trip && (
       <div className="">

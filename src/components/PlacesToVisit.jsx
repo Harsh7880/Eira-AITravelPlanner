@@ -17,7 +17,7 @@ const PlacesToVisit = ({ trip }) => {
                   {item?.plan.map((place, index) => (
                     <div key={index}>
                       <h2 className="text-sm font-medium text-[#7B68EE]">
-                        {place.time}
+                        {place?.time}
                       </h2>
                       <PlaceCard place={place} />
                     </div>

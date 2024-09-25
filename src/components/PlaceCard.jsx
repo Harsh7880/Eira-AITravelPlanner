@@ -18,7 +18,7 @@ const PlaceCard = ({ place }) => {
           <div className="col-span-8 flex flex-col gap-2 ">
             <h2 className="font-bold text-lg">{place?.placeName}</h2>
             <p className="text-gray-500 text-sm">{place?.placeDetails}</p>
-            <p className="text-sm">💵 {place.ticketPricing}</p>
+            <p className="text-sm">💵 {place?.ticketPricing}</p>
             <p className="text-sm font-medium">🕙 {place?.timeTravel}</p>
           </div>
         </div>

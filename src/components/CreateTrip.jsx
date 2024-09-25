@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { SELECT_TRAVEL_LIST, SELECT_BUDGET_OPTIONS, GENERATE_TRIP_PROMPT} from "../utils/constants";
 import toast from "react-hot-toast";
@@ -13,24 +13,15 @@ import {db} from '../service/firebase'
 import { doc, setDoc } from "firebase/firestore";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-
+import useForm from "..//hooks/useForm";
 const CreateTrip = () => {
+  
   const [place, setPlace] = useState();
-  const [formData, setFormData] = useState([]);
   const [openDialog, setOpenDailog] = useState(false);
   const [loading,setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleInputChanges = (name, value) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  useEffect(() => {
-  }, [formData]);
-
+  const {handleInputChanges,formData} = useForm();
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => getUserData(tokenResponse),
     onError: (tokenResponse) => console.log(tokenResponse),
