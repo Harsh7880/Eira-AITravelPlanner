@@ -3,7 +3,6 @@
 import PlaceCard from "./PlaceCard";
 
 const PlacesToVisit = ({ trip }) => {
-  console.log(trip);
   return (
     trip && (
       <div className="my-5">

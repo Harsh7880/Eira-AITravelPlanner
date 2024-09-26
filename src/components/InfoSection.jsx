@@ -1,15 +1,20 @@
 /* eslint-disable react/prop-types */
-import placeholder from "../assets/placeholder.jpg";
 import { IoIosSend } from "react-icons/io";
 import { Button } from "./ui/button";
+import { usePlacePhoto } from "../hooks/usePhotoURL";
 
 const InfoSection = ({ trip }) => {
+  const data = {
+    textQuery: trip?.userSelection?.location?.label,
+  };
+  const photoURL = usePlacePhoto(trip, data);
+
   return (
     trip && (
       <div className="">
         <img
           className="h-[340px] w-full object-cover rounded-lg"
-          src={placeholder}
+          src={photoURL}
           alt=""
         />
         <div className="flex justify-between items-center">
