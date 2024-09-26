@@ -25,23 +25,27 @@ const Navbar = () => {
   return (
     <div className="flex justify-between py-4 px-10 shadow-lg">
       <div className="flex w-40">
-        <Link to={'/'} ><img className="w-full" src={logo} alt="logo" /></Link>
+        <Link to={"/"}>
+          <img className="w-full" src={logo} alt="logo" />
+        </Link>
       </div>
       <div className="flex justify-center items-center">
         {user ? (
           <div className="flex items-center gap-3">
-            <Button 
-             onClick ={()=>{
-              navigate('/create-trip');
-             }}
-              className="bg-white text-black rounded-full border hover:bg-gray-100">
+            <Link
+              to={"/create-trip"}
+              className="bg-white text-black rounded-full border hover:bg-gray-100 px-4 py-2 text-sm font-medium"
+            >
               + Create Trips
-            </Button>
-            <Button onClick={()=>{
-              navigate('/my-trips')
-            }} className="bg-white text-black rounded-full border hover:bg-gray-100">
-              My Trips
-            </Button>
+            </Link>
+            <Link
+              to={"/my-trips"}
+              className="bg-white text-black rounded-full border hover:bg-gray-100 px-4 py-2 text-sm font-medium"
+            >
+              {" "}
+              My Trips{" "}
+            </Link>
+
             <Popover>
               <PopoverTrigger>
                 {" "}
