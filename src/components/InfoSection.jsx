@@ -2,7 +2,7 @@
 import { IoIosSend } from "react-icons/io";
 import { Button } from "./ui/button";
 import { usePlacePhoto } from "../hooks/usePhotoURL";
-
+import placeholder from '../assets/placeholder.jpg'
 const InfoSection = ({ trip }) => {
   const data = {
     textQuery: trip?.userSelection?.location?.label,
@@ -14,7 +14,7 @@ const InfoSection = ({ trip }) => {
       <div className="">
         <img
           className="h-[340px] w-full object-cover rounded-lg"
-          src={photoURL}
+          src={photoURL ? photoURL : placeholder}
           alt=""
         />
         <div className="flex justify-between items-center">

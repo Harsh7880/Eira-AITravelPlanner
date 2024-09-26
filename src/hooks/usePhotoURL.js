@@ -14,7 +14,7 @@ export const usePlacePhoto = (trip,data) => {
   const GetPlacePhoto = async () => {
    
     await GetPlaceDetail(data).then((res) => {
-      const photoUrl = PHOTO_REF_URL.replace("{NAME}", res?.data?.places[0]?.photos[6]?.name);
+      const photoUrl = PHOTO_REF_URL.replace("{NAME}", res?.data?.places[0]?.photos[1]?.name);
       setPhotoURL(photoUrl);
     });
   };

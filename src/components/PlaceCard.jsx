@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { usePlacePhoto } from "../hooks/usePhotoURL";
-
+import placeholder from '../assets/placeholder.jpg'
 const PlaceCard = ({ place }) => {
   const data = {
     textQuery: place?.placeName,
   };
   const photoURL = usePlacePhoto(place, data);
-
   return (
     place && (
       <Link
@@ -20,8 +19,8 @@ const PlaceCard = ({ place }) => {
           <div className="col-span-4 flex justify-between items-center">
             <img
               className="rounded-xl h-[150px] w-[150px] object-cover"
-              src={photoURL}
-              alt={place?.placeName}
+              src={photoURL ? photoURL: placeholder}
+              alt=''
             />
           </div>
           <div className="col-span-8 flex flex-col gap-2 ">
