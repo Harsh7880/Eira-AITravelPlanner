@@ -1,5 +1,5 @@
-import logo from "../assets/logo.svg";
 import { Button } from "./ui/button";
+import EiRa from "../assets/EiRa1.png";
 import {
   Popover,
   PopoverContent,
@@ -24,9 +24,9 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between py-4 px-10 shadow-lg">
-      <div className="flex w-40">
+      <div className="flex items-center gap-3 w-40">
         <Link to={"/"}>
-          <img className="w-full" src={logo} alt="logo" />
+          <img className="w-[40%]" src={EiRa} alt="logo" />
         </Link>
       </div>
       <div className="flex justify-center items-center">
@@ -84,7 +84,7 @@ const Navbar = () => {
         <DialogContent>
           <DialogHeader>
             <DialogDescription>
-              <img className="w-28" src={logo} alt="" />
+              <img className="w-28" src={EiRa} alt="" />
               <h2 className=" font-bold text-lg mt-4">Sign In with Google</h2>
               <p className="mt-2">
                 Sign in to the app with Google authentication securely

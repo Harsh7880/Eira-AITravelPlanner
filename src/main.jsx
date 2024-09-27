@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ViewTrip from "./components/ViewTrip.jsx";
 import MyTrips from "./components/MyTrips.jsx";
+import Footer from "./components/Footer.jsx";
 
 createRoot(document.getElementById("root")).render(
 
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/view-trip/:tripId" element={<ViewTrip />} />
           <Route path="/my-trips" element={<MyTrips />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </GoogleOAuthProvider>
   

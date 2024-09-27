@@ -1,27 +1,35 @@
-import {  useState } from "react";
+import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { SELECT_TRAVEL_LIST, SELECT_BUDGET_OPTIONS, GENERATE_TRIP_PROMPT} from "../utils/constants";
+import {
+  SELECT_TRAVEL_LIST,
+  SELECT_BUDGET_OPTIONS,
+  GENERATE_TRIP_PROMPT,
+} from "../utils/constants";
 import toast from "react-hot-toast";
 import { chatSession } from "../service/AIModel";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { Dialog, DialogContent, DialogDescription, DialogHeader} from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import {db} from '../service/firebase'
+import { db } from "../service/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import useForm from "..//hooks/useForm";
 const CreateTrip = () => {
-  
   const [place, setPlace] = useState();
   const [openDialog, setOpenDailog] = useState(false);
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const {handleInputChanges,formData} = useForm();
+  const { handleInputChanges, formData } = useForm();
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => getUserData(tokenResponse),
     onError: (tokenResponse) => console.log(tokenResponse),
@@ -41,13 +49,15 @@ const CreateTrip = () => {
       toast.error("Please fill the necessary details.");
       return;
     }
-    const finalPrompt = GENERATE_TRIP_PROMPT
-      .replace("{location}",formData?.location.label)
+    const finalPrompt = GENERATE_TRIP_PROMPT.replace(
+      "{location}",
+      formData?.location.label
+    )
       .replace("{noOfDays}", formData?.noOfDays)
       .replace("{noOfPeople}", formData?.noOfPeople)
       .replace("{budget}", formData?.budget)
       .replace("{noOfDays}", formData?.noOfDays);
-    
+
     setLoading(true);
     const result = await chatSession.sendMessage(finalPrompt);
     setLoading(false);
@@ -78,26 +88,25 @@ const CreateTrip = () => {
   const saveTrip = async (tripData) => {
     setLoading(true);
     const docId = Date.now().toString();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     await setDoc(doc(db, "AITrips", docId), {
       userSelection: formData,
       tripData: JSON.parse(tripData),
       userEmail: user?.email,
-      id: docId
+      id: docId,
     });
     setLoading(false);
-    navigate('/view-trip/'+ docId);
-  }
+    navigate("/view-trip/" + docId);
+  };
 
   return (
-    <div className="my-10 mb-20 px-6 lg:px-56">
-      <div className="flex flex-col gap-10">
+    <div className="my-20 mb-20 px-6 lg:px-56">
+      <div className="flex flex-col gap-6">
         <h2 className="text-3xl font-bold">
-          Tell us your travel preferences 🏕️🌴
+          Ready for your next great escape? 🌅✈️
         </h2>
-        <p className="text-sm text-gray-500">
-          Just provide some basic information, and our trip planner will
-          generate a customized itinerary based on your prefrences
+        <p className="text-lg text-gray-500">
+          Tell us your dream destination, and let us plan your perfect getaway.
         </p>
         <div className="flex flex-col gap-10 mt-10">
           <div className="">
@@ -105,6 +114,7 @@ const CreateTrip = () => {
               What is destination of choice?{" "}
             </h3>
             <GooglePlacesAutocomplete
+              className="rounded-ful"
               apiKey="AIzaSyCYJiw6Cf4JEQ_ybTzw9iXwBZOtKIKYl3s"
               selectProps={{
                 place,
@@ -118,7 +128,7 @@ const CreateTrip = () => {
         </div>
         <div>
           <h3 className="text-xl my-3 font-medium ">
-            How many days are you planning your trip ?
+            Set Your Travel Timeline
           </h3>
           <input
             onChange={(e) => handleInputChanges("noOfDays", e.target.value)}
@@ -128,10 +138,7 @@ const CreateTrip = () => {
           />
         </div>
         <div>
-          <h3 className="text-xl font-medium">
-            {" "}
-            Who do you plan on traveling with on your next adventure?
-          </h3>
+          <h3 className="text-xl font-medium"> Who Are You Traveling With ?</h3>
           <div className="flex gap-6 mt-6">
             {SELECT_TRAVEL_LIST.map((listItem) => (
               <div
@@ -179,10 +186,11 @@ const CreateTrip = () => {
             className="px-5 py-2.5 rounded-lg bg-black text-white font-lg font-medium"
             onClick={generateTrip}
           >
-            {
-              loading? <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" /> : ' Generate Trip'
-            }
-           
+            {loading ? (
+              <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" />
+            ) : (
+              "Plan My Trip"
+            )}
           </button>
           <Dialog open={openDialog}>
             <DialogContent>
