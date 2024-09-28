@@ -5,7 +5,7 @@ import PlaceCard from "./PlaceCard";
 const PlacesToVisit = ({ trip }) => {
   return (
     trip && (
-      <div className="my-5">
+      <div className="my-10">
         <h2 className="font-bold text-xl">Places To Visit</h2>
         <div>
           {trip?.tripData?.itinerary.map((item, index) => (
