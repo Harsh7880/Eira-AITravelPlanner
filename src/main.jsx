@@ -1,13 +1,13 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import CreateTrip from "./components/CreateTrip.jsx";
+import CreateTrip from "./pages/CreateTrip.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import ViewTrip from "./components/ViewTrip.jsx";
-import MyTrips from "./components/MyTrips.jsx";
+import ViewTrip from "./pages/ViewTrip.jsx";
+import MyTrips from "./pages/MyTrips.jsx";
 import Footer from "./components/Footer.jsx";
 
 createRoot(document.getElementById("root")).render(

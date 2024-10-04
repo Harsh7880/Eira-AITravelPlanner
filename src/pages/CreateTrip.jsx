@@ -6,7 +6,7 @@ import {
   GENERATE_TRIP_PROMPT,
 } from "../utils/constants";
 import toast from "react-hot-toast";
-import { chatSession } from "../service/AIModel";
+import { chatSession } from "../services/AIModel";
 import logo from "../assets/logo.jpg";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -14,11 +14,11 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
+} from "../components/ui/dialog";
+import { Button } from "../components/ui/button";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { db } from "../service/firebase";
+import { db } from "../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";

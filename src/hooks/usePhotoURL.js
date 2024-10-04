@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GetPlaceDetail } from "../service/GlobalAPI";
+import { GetPlaceDetail } from "../services/GlobalAPI";
 import {PHOTO_REF_URL} from '../utils/constants'
 
 export const usePlacePhoto = (trip,data) => {

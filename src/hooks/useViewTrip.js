@@ -1,4 +1,4 @@
-import { db } from "../service/firebase";
+import { db } from "../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";

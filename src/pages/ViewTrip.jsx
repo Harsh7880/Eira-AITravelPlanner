@@ -1,6 +1,6 @@
-import InfoSection from "./InfoSection";
-import Hotel from "./Hotel";
-import PlacesToVisit from "./PlacesToVisit";
+import InfoSection from "../components/InfoSection";
+import Hotel from "../components/Hotel";
+import PlacesToVisit from "../components/PlacesToVisit";
 import useViewTrip from "../hooks/useViewTrip";
 
 const ViewTrip = () => {

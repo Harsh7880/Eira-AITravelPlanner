@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../service/firebase";
+import { db } from "../services/firebase";
 const useMyTrip = () => {
     const [userTrips, setUsertrips] = useState([]);
     useEffect(() => {

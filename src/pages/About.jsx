@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import { FaLocationArrow } from "react-icons/fa";
 import about from "../assets/about.png";
 import { ABOUT_TEXT } from "../utils/constants";
@@ -18,8 +18,8 @@ const About = () => {
           </Button>{" "}
         </Link>
       </div>
-      <div className="col-span-6 items-center">
-        <img className="w-[80%] rounded-2xl mx-auto" src={about} alt="" />
+      <div className="col-span-6 items-center justify-center">
+        <img className="w-[80%] h-[400px] rounded-2xl mx-auto" src={about} alt="" />
       </div>
     </div>
   );

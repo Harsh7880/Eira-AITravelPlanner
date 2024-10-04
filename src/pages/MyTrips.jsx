@@ -1,5 +1,5 @@
 
-import UserTripCard from "./UserTripCard";
+import UserTripCard from "../components/UserTripCard";
 import useMyTrip from "../hooks/useMyTrip";
 
 const MyTrips = () => {

@@ -2,10 +2,39 @@
 import EiRa from "../assets/EiRa1.png";
 import logo2 from "../assets/logo.jpg";
 import { NavLink, Link } from "react-router-dom";
-import About from "./About";
+import About from "../pages/About";
 import Testimonials from "./Testimonials";
 import { HERO } from "../utils/constants";
+import Youtube from "../components/Youtube";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Hero = () => {
+
+  const [videoData,setVideoData] = useState([]);
+  const getYoubeVideo =  async () => {
+    
+     axios
+        .get(
+          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA1krIpfRy2inizk2BnuPS6GzfJhv-qMDA&q=lucknow&type=video&videoDuration=short&part=snippet`,
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((resp) => {
+          setVideoData(resp?.data);
+         console.log(resp?.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+  }
+
+  useEffect(()=>{
+    getYoubeVideo();
+  })
+
   return (
     <div className="mt-10 pt-4">
       <div className="flex mb-5 items-center justify-center mx-auto gap-3 w-40">
@@ -34,6 +63,7 @@ const Hero = () => {
       </div>
       <About />
       <Testimonials />
+      <Youtube videoData={videoData} />
     </div>
   );
 };
