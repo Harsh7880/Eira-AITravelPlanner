@@ -54,9 +54,9 @@ const Hero = () => {
             watch as your customized travel plan takes shape, ensuring every
             moment of your trip is unforgettable.
           </p>
-          <Button className="flex gap-2 mt-6 items-center bg-[#21BCBE] px-16 py-7 rounded-full text-xl">
+          <Link to={'create-trip'}> <Button className="flex gap-2 mt-6 items-center bg-[#21BCBE] px-16 py-7 rounded-full text-xl">
             Plan a new trip <FaLocationArrow />
-          </Button>
+          </Button> </Link>
         </div>
         <div className="col-span-6 items-center">
           <img className="w-[80%] rounded-2xl mx-auto" src={about} alt="" />

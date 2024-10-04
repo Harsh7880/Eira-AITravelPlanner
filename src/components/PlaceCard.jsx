@@ -25,7 +25,7 @@ const PlaceCard = ({ place }) => {
           </div>
           <div className="col-span-4 flex justify-between items-center">
             <img
-              className="rounded-xl h-[150px] w-[150px] object-cover"
+              className="rounded-xl h-[150px] w-[230px] object-cover"
               src={photoURL ? photoURL: placeholder}
               alt=''
             />
