@@ -23,6 +23,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import useForm from "..//hooks/useForm";
+import { CREATE_TRIP } from "../utils/constants";
+
 const CreateTrip = () => {
   const [place, setPlace] = useState();
   const [openDialog, setOpenDailog] = useState(false);
@@ -43,20 +45,20 @@ const CreateTrip = () => {
     }
 
     if (formData?.noOfDays > 10) {
-      toast.error("Please plan a trip less than 10 days");
+      toast.error(CREATE_TRIP.noOfDaysError);
     }
     if (!formData?.location || !formData?.noOfPeople || !formData?.budget) {
-      toast.error("Please fill the necessary details.");
+      toast.error(CREATE_TRIP.fillAllTheDeatilsError);
       return;
     }
     const finalPrompt = GENERATE_TRIP_PROMPT.replace(
       "{location}",
       formData?.location.label
     )
-      .replace("{noOfDays}", formData?.noOfDays)
-      .replace("{noOfPeople}", formData?.noOfPeople)
-      .replace("{budget}", formData?.budget)
-      .replace("{noOfDays}", formData?.noOfDays);
+      .replace(CREATE_TRIP.noOfDays, formData?.noOfDays)
+      .replace(CREATE_TRIP.noOfPeople, formData?.noOfPeople)
+      .replace(CREATE_TRIP.budget, formData?.budget)
+      .replace(CREATE_TRIP.noOfDays, formData?.noOfDays);
 
     setLoading(true);
     const result = await chatSession.sendMessage(finalPrompt);
@@ -102,16 +104,12 @@ const CreateTrip = () => {
   return (
     <div className="my-20 mb-20 px-6 lg:px-56">
       <div className="flex flex-col gap-6">
-        <h2 className="text-3xl font-bold">
-          Ready for your next great escape? 🌅✈️
-        </h2>
-        <p className="text-lg text-gray-500">
-          Tell us your dream destination, and let us plan your perfect getaway.
-        </p>
+        <h2 className="text-3xl font-bold">{CREATE_TRIP.title}</h2>
+        <p className="text-lg text-gray-500">{CREATE_TRIP.titleDescription}</p>
         <div className="flex flex-col gap-10 mt-10">
           <div className="">
             <h3 className="text-xl my-3 font-medium">
-              What is destination of choice?{" "}
+              {CREATE_TRIP.destinantionLabel}
             </h3>
             <GooglePlacesAutocomplete
               className="rounded-ful"
@@ -128,7 +126,7 @@ const CreateTrip = () => {
         </div>
         <div>
           <h3 className="text-xl my-3 font-medium ">
-            Set Your Travel Timeline
+            {CREATE_TRIP.timeLineLabel}
           </h3>
           <input
             onChange={(e) => handleInputChanges("noOfDays", e.target.value)}
@@ -138,7 +136,10 @@ const CreateTrip = () => {
           />
         </div>
         <div>
-          <h3 className="text-xl font-medium"> Who Are You Traveling With ?</h3>
+          <h3 className="text-xl font-medium">
+            {" "}
+            {CREATE_TRIP.noOfPeopleLabel}
+          </h3>
           <div className="flex gap-6 mt-6">
             {SELECT_TRAVEL_LIST.map((listItem) => (
               <div
@@ -161,7 +162,7 @@ const CreateTrip = () => {
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-medium">What is Your Budget?</h3>
+          <h3 className="text-xl font-medium">{CREATE_TRIP.budgetLabel}</h3>
           <div className="flex gap-6 mt-6">
             {SELECT_BUDGET_OPTIONS.map((listItem) => (
               <div
@@ -198,16 +199,15 @@ const CreateTrip = () => {
                 <DialogDescription>
                   <img className="w-28" src={logo} alt="" />
                   <h2 className=" font-bold text-lg mt-4">
-                    Sign In with Google
+                    {CREATE_TRIP.signInLabel}
                   </h2>
-                  <p className="mt-2">
-                    Sign in to the app with Google authentication securely
-                  </p>
+                  <p className="mt-2">{CREATE_TRIP.signInDescription}</p>
                   <Button
                     onClick={login}
                     className="flex font-bold items-center gap-4 w-full mt-4"
                   >
-                    Sing in With Google <FcGoogle className="w-7 h-7" />
+                    {CREATE_TRIP.signInButtonLabel}{" "}
+                    <FcGoogle className="w-7 h-7" />
                   </Button>
                 </DialogDescription>
               </DialogHeader>
