@@ -18,7 +18,7 @@ const About = () => {
           </Button>{" "}
         </Link>
       </div>
-      <div className="col-span-6 items-center justify-center">
+      <div className="col-span-6 items-center justify-center mt-10">
         <img className="w-[80%] h-[400px] rounded-2xl mx-auto" src={about} alt="" />
       </div>
     </div>

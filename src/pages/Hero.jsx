@@ -15,7 +15,7 @@ const Hero = () => {
     
      axios
         .get(
-          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA1krIpfRy2inizk2BnuPS6GzfJhv-qMDA&q=lucknow&type=video&videoDuration=short&part=snippet`,
+          // `https://www.googleapis.com/youtube/v3/search?key=AIzaSyANDEjf6YtxlRET_w5ZDfrIacNoJx_zMHA&q=lucknow&type=video&videoDuration=short&part=snippet`,
           {
             headers: {
               Accept: "application/json",
@@ -24,7 +24,7 @@ const Hero = () => {
         )
         .then((resp) => {
           setVideoData(resp?.data);
-         console.log(resp?.data);
+        //  console.log(resp?.data);
         })
         .catch((err) => {
           console.error(err);
@@ -63,7 +63,7 @@ const Hero = () => {
       </div>
       <About />
       <Testimonials />
-      <Youtube videoData={videoData} />
+    <Youtube  />
     </div>
   );
 };
