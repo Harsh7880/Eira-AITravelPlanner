@@ -11,7 +11,7 @@ const Youtube = () => {
   },[])
  
   
-   console.log(videodata)
+   console.log(videoData)
 //  }
     // console.log(`https://www.youtube.com/embed/${id}si=mkzyOVZj5rH21UOm`)
   return videoData && (
