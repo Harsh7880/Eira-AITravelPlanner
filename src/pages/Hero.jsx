@@ -63,7 +63,7 @@ const Hero = () => {
       </div>
       <About />
       <Testimonials />
-    <Youtube  />
+
     </div>
   );
 };
