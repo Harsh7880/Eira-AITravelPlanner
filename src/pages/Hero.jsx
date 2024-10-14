@@ -36,7 +36,7 @@ const Hero = () => {
   })
 
   return (
-    <div className="mt-10 pt-4">
+    <div className="mt-10 pt-4 lg:px-0 px-8">
       <div className="flex mb-5 items-center justify-center mx-auto gap-3 w-40">
         <img
           className="border-2 border-[#21BCBE] h-12 w-12 rounded-full"
