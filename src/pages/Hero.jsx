@@ -48,7 +48,7 @@ const Hero = () => {
         </Link>
       </div>
       <div className="lg:px-72 flex items-center flex-col text-center gap-8">
-        <h2 className="text-7xl font-bold">
+        <h2 className="lg:text-7xl text-4xl font-bold">
           <span className="text-[#002c6a]">{HERO.title}</span>
         </h2>
         <p className="font-normal text-gray-500 w-[70%]">
@@ -56,7 +56,7 @@ const Hero = () => {
         </p>
         <NavLink
           to={"/create-trip"}
-          className="shadow-sm shadow-[#21BCBE]  text-black text-xl font-medium py-3 px-10 rounded-full"
+          className="shadow-sm shadow-[#21BCBE]  text-black lg:text-xl text-lg font-medium py-3 lg:px-10 px-6 rounded-full"
         >
           {HERO.buttonLable}
         </NavLink>

@@ -74,7 +74,7 @@ const Navbar = () => {
             onClick={() => {
               setOpenDailog(true);
             }}
-            className="cursor-pointer px-10 py-2 text-white font-medium rounded-full bg-[#21BCBE]"
+            className="cursor-pointer lg:px-10 px-6 lg:py-2 py-1.5 text-white font-medium rounded-full bg-[#21BCBE]"
           >
             Sign In
           </Button>

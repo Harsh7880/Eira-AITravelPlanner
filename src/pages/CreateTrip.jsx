@@ -140,7 +140,7 @@ const CreateTrip = () => {
             {" "}
             {CREATE_TRIP.noOfPeopleLabel}
           </h3>
-          <div className="flex gap-6 mt-6">
+          <div className="flex lg:flex-row flex-col gap-6 mt-6">
             {SELECT_TRAVEL_LIST.map((listItem) => (
               <div
                 onClick={() =>
@@ -163,7 +163,7 @@ const CreateTrip = () => {
         </div>
         <div>
           <h3 className="text-xl font-medium">{CREATE_TRIP.budgetLabel}</h3>
-          <div className="flex gap-6 mt-6">
+          <div className="flex lg:flex-row flex-col gap-6 mt-6">
             {SELECT_BUDGET_OPTIONS.map((listItem) => (
               <div
                 onClick={() => handleInputChanges("budget", listItem.title)}
