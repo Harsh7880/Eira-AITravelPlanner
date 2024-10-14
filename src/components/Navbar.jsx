@@ -34,13 +34,13 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             <Link
               to={"/create-trip"}
-              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-2 py-1 font-medium"
+              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-3 py-1.5 font-medium"
             >
               + Create Trips
             </Link>
             <Link
               to={"/my-trips"}
-              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-2 py-1 font-medium"
+              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-3 py-1.5 font-medium"
             >
               {" "}
               My Trips{" "}
@@ -50,7 +50,7 @@ const Navbar = () => {
               <PopoverTrigger>
                 {" "}
                 <img
-                  className="lg:w-9 lg:h-9 w-6 h-6 cursor-pointer rounded-full"
+                  className="lg:w-9 lg:h-9 w-7 h-7 cursor-pointer rounded-full"
                   src={user?.picture}
                   alt="user-icon"
                 />
