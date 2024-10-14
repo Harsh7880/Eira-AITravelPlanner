@@ -197,7 +197,7 @@ const CreateTrip = () => {
             <DialogContent>
               <DialogHeader>
                 <DialogDescription>
-                  <img className="w-28" src={logo} alt="" />
+                  <img className="w-16" src={logo} alt="" />
                   <h2 className=" font-bold text-lg mt-4">
                     {CREATE_TRIP.signInLabel}
                   </h2>

@@ -20,15 +20,16 @@ const HotelCardItem = ({ hotel }) => {
       >
         <div className="shadow-lg hover:scale-105 cursor-pointer transition-all duration-200 rounded-lg p-3 h-[330px]">
           <img
-            className="rounded-xl h-[150px] w-[200px] object-cover mx-auto"
+            className="rounded-xl lg:h-[150px] lg:w-[200px] h-[120px] w-[180px] object-cover mx-auto"
             src={photoURL? photoURL : hotelPlaceholder}
             alt={hotel}
           />
-          <div className="my-2 flex flex-col gap-2">
-            <h2 className="font-medium mt-2">{hotel?.hotelName}</h2>
+          <div className="my-2 flex flex-col lg:gap-2 gap-3">
+            <h2 className="font-medium mt-2 lg:text-lg text-sm">{hotel?.hotelName}</h2>
             <h2 className="text-gray-500 text-xs">📍 {hotel?.hotelAddress}</h2>
-            <div className="flex gap-5"><h2 className="text-sm">💰 {hotel?.price}</h2>
-            <h2 className="text-sm">⭐ {hotel?.rating}</h2></div>
+            <div className="flex lg:flex-row flex-col lg:gap-5 gap-3">
+              <h2 className="lg:text-sm text-xs">💰 {hotel?.price}</h2>
+              <h2 className="lg:text-sm text-xs">⭐ {hotel?.rating}</h2></div>
           </div>
         </div>
       </Link>

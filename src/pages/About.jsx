@@ -10,7 +10,7 @@ const About = () => {
         <h2 className="mb-6 lg:text-5xl text-3xl px-4 lg:px-0 text-center font-bold text-[#002c6a]">
           {ABOUT_TEXT.title}
         </h2>
-        <p className="lg:text-lg lg:px-0 px-8 text-sm font-medium">{ABOUT_TEXT.description}</p>
+        <p className="lg:text-lg lg:px-0 px-6 text-sm font-medium">{ABOUT_TEXT.description}</p>
         <Link to={"create-trip"}>
           {" "}
           <Button className="flex gap-2 mt-6 items-center bg-[#21BCBE] lg:px-16 px-8 lg:py-7 py-5 mx-auto rounded-full lg:text-xl text-lg">

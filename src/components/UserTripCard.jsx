@@ -10,7 +10,7 @@ const UserTripCard = ({trip}) => {
   return trip && (
     <Link to={'/view-trip/'+trip?.id}> 
         <div className="cursor-pointer hover:scale-105 transition-all duration-200">
-        <img src={photoURL? photoURL :placeholder} className='w-[300px] h-[250px] rounded-lg object-cover' alt="" />
+        <img src={photoURL? photoURL :placeholder} className='lg:w-[300px] lg:h-[250px] w-[180px] h-[135px] rounded-lg object-cover' alt="" />
         <div className='flex flex-col gap-1 my-3'>
           <h2 className='text-lg font-semibold'>{trip?.userSelection?.location?.label}</h2>
           <p className='text-sm text-gray-500'>{trip?.userSelection?.noOfDays} Days trip with {trip?.userSelection?.budget} Budget </p>

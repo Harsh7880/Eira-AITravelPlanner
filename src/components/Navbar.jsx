@@ -24,9 +24,9 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between py-4 px-10 shadow-lg">
-      <div className="flex items-center gap-3 w-40">
+      <div className="flex items-center gap-3 lg:w-40">
         <Link to={"/"}>
-          <img className="w-[40%]" src={EiRa} alt="logo" />
+          <img className="w-16" src={EiRa} alt="logo" />
         </Link>
       </div>
       <div className="flex justify-center items-center">
@@ -34,13 +34,13 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             <Link
               to={"/create-trip"}
-              className="bg-white text-black rounded-full border hover:bg-gray-100 px-4 py-2 text-sm font-medium"
+              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-2 py-1 font-medium"
             >
               + Create Trips
             </Link>
             <Link
               to={"/my-trips"}
-              className="bg-white text-black rounded-full border hover:bg-gray-100 px-4 py-2 text-sm font-medium"
+              className="bg-white text-black rounded-full border hover:bg-gray-100 lg:px-4 lg:py-2 lg:text-sm text-xs px-2 py-1 font-medium"
             >
               {" "}
               My Trips{" "}
@@ -50,7 +50,7 @@ const Navbar = () => {
               <PopoverTrigger>
                 {" "}
                 <img
-                  className="w-9 h-9 cursor-pointer rounded-full"
+                  className="lg:w-9 lg:h-9 w-6 h-6 cursor-pointer rounded-full"
                   src={user?.picture}
                   alt="user-icon"
                 />
@@ -84,7 +84,7 @@ const Navbar = () => {
         <DialogContent>
           <DialogHeader>
             <DialogDescription>
-              <img className="w-28" src={EiRa} alt="" />
+              <img className="w-16" src={EiRa} alt="" />
               <h2 className=" font-bold text-lg mt-4">Sign In with Google</h2>
               <p className="mt-2">
                 Sign in to the app with Google authentication securely

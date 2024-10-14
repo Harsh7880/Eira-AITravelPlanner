@@ -6,7 +6,7 @@ import useViewTrip from "../hooks/useViewTrip";
 const ViewTrip = () => {
   const { trip } = useViewTrip();
   return (
-    <div className="p-10 md:px-20 py-20 lg:px-44 xl:px-56">
+    <div className="lg:p-10 md:px-20 py-20 lg:px-44 xl:px-56 p-8">
       {/* information Section  */}
       <InfoSection trip={trip} />
 

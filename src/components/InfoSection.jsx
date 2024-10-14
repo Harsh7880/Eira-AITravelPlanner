@@ -13,7 +13,7 @@ const InfoSection = ({ trip }) => {
     trip && (
       <div className="">
         <img
-          className="h-[340px] w-full object-cover rounded-lg"
+          className="lg:h-[340px] h-[200px] w-full object-cover rounded-lg"
           src={photoURL ? photoURL : placeholder}
           alt=""
         />
@@ -22,21 +22,18 @@ const InfoSection = ({ trip }) => {
             <h2 className="text-2xl font-bold">
               {trip?.userSelection?.location?.label}
             </h2>
-            <div className="flex gap-4">
-              <h2 className="bg-gray-200 text-sm text-gray-500 px-3 py-1 rounded-full">
+            <div className="flex lg:flex-row flex-col gap-4">
+              <h2 className="bg-gray-200 lg:text-sm text-xs text-gray-500 px-3 py-1 rounded-full">
                 📅 {trip?.userSelection?.noOfDays} Day
               </h2>
-              <h2 className="bg-gray-200 text-sm text-gray-500 px-3 py-1 rounded-full">
+              <h2 className="bg-gray-200 lg:text-sm text-xs text-gray-500 px-3 py-1 rounded-full">
                 💰 {trip?.userSelection?.budget} Budget
               </h2>
-              <h2 className="bg-gray-200 text-sm text-gray-500 px-3 py-1 rounded-full">
+              <h2 className="bg-gray-200 lg:text-sm text-xs text-gray-500 px-3 py-1 rounded-full">
                 🥂 No of Traveller: {trip?.userSelection?.noOfPeople} People{" "}
               </h2>
             </div>
           </div>
-          <Button>
-            <IoIosSend />
-          </Button>
         </div>
       </div>
     )
