@@ -5,35 +5,14 @@ import { NavLink, Link } from "react-router-dom";
 import About from "../pages/About";
 import Testimonials from "./Testimonials";
 import { HERO } from "../utils/constants";
-import Youtube from "../components/Youtube";
-import { useEffect, useState } from "react";
+import {  useContext } from "react";
 import axios from "axios";
+import ThemeContext from "../context/themeContext";
+
 const Hero = () => {
 
-  const [videoData,setVideoData] = useState([]);
-  const getYoubeVideo =  async () => {
-    
-     axios
-        .get(
-          // `https://www.googleapis.com/youtube/v3/search?key=AIzaSyANDEjf6YtxlRET_w5ZDfrIacNoJx_zMHA&q=lucknow&type=video&videoDuration=short&part=snippet`,
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((resp) => {
-          setVideoData(resp?.data);
-        //  console.log(resp?.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-  }
+  const {theme} = useContext(ThemeContext);
 
-  useEffect(()=>{
-    getYoubeVideo();
-  })
 
   return (
     <div className="mt-10 pt-4 lg:px-0 px-8">

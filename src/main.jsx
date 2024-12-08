@@ -9,13 +9,17 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import ViewTrip from "./pages/ViewTrip.jsx";
 import MyTrips from "./pages/MyTrips.jsx";
 import Footer from "./components/Footer.jsx";
+import ThemeContextProvider from "./context/themeContextProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
 
+  
     <GoogleOAuthProvider clientId="298911721929-2jrbeua2j01vbqkks8dc8f5dljacekrq.apps.googleusercontent.com">
+      <ThemeContextProvider>
       <BrowserRouter>
         <Toaster />
         <Navbar />
+        
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/create-trip" element={<CreateTrip />} />
@@ -24,6 +28,7 @@ createRoot(document.getElementById("root")).render(
         </Routes>
         <Footer />
       </BrowserRouter>
+      </ThemeContextProvider>
     </GoogleOAuthProvider>
   
 );
