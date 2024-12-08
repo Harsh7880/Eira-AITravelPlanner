@@ -1,5 +1,14 @@
 import { Button } from "./ui/button";
 import EiRa from "../assets/EiRa1.png";
+
+import { useContext } from "react";
+import ThemeContext from "../context/themeContext";
+
+import { FcGoogle } from "react-icons/fc";
+import useGetUserData from "../hooks/useGetUserData";
+import { googleLogout } from "@react-oauth/google";
+import { Link } from "react-router-dom";
+
 import {
   Popover,
   PopoverContent,
@@ -13,17 +22,14 @@ import {
   DialogHeader,
 } from "./ui/dialog";
 
-import { FcGoogle } from "react-icons/fc";
-import useGetUserData from "../hooks/useGetUserData";
-import { googleLogout } from "@react-oauth/google";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const { openDialog, setOpenDailog, navigate, login } = useGetUserData();
+  const {theme, setTheme} = useContext(ThemeContext);
 
   return (
-    <div className="flex justify-between py-4 px-10 shadow-lg">
+    <div className={ `flex justify-between py-4 px-10 shadow-lg ${theme ? `bg-black text-white`: `bg-white text-black`}`}>
       <div className="flex items-center gap-3 lg:w-40">
         <Link to={"/"}>
           <img className="w-16" src={EiRa} alt="logo" />
@@ -45,7 +51,15 @@ const Navbar = () => {
               {" "}
               My Trips{" "}
             </Link>
-
+            <Button
+            onClick={() => {
+              setTheme(!theme);
+              console.log(theme);
+            }}
+            className="cursor-pointer lg:px-10 px-6 lg:py-2 py-1.5 text-white font-medium rounded-full bg-[#21BCBE]"
+          >
+            Dark Theme
+          </Button>
             <Popover>
               <PopoverTrigger>
                 {" "}
@@ -78,6 +92,7 @@ const Navbar = () => {
           >
             Sign In
           </Button>
+          
         )}
       </div>
       <Dialog open={openDialog}>
