@@ -1,6 +1,6 @@
 import Hero from "./pages/Hero"
 import { useContext } from "react";
-import ThemeContext from "./context/themeContext";
+import ThemeContext from "./context/ThemeContext";
 
 function App() {
 
