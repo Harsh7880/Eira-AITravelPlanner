@@ -9,7 +9,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import ViewTrip from "./pages/ViewTrip.jsx";
 import MyTrips from "./pages/MyTrips.jsx";
 import Footer from "./components/Footer.jsx";
-import ThemeContextProvider from "./context/themeContextProvider";
+import ThemeContextProvider from './context/ThemeContextProvider.jsx';
 
 createRoot(document.getElementById("root")).render(
 
