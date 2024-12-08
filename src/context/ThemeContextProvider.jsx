@@ -1,4 +1,4 @@
-import ThemeContext from './themeContext'
+import ThemeContext from '../context/ThemeContext'
 import { useState } from 'react'
 const ThemeContextProvider = ({children}) => {
 
