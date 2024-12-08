@@ -6,8 +6,7 @@ import About from "../pages/About";
 import Testimonials from "./Testimonials";
 import { HERO } from "../utils/constants";
 import {  useContext } from "react";
-import axios from "axios";
-import ThemeContext from "../context/themeContext";
+import ThemeContext from "../context/ThemeContext";
 
 const Hero = () => {
 
