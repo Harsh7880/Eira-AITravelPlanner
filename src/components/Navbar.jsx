@@ -51,7 +51,7 @@ const Navbar = () => {
               {" "}
               My Trips{" "}
             </Link>
-            <Button
+            {/* <Button
             onClick={() => {
               setTheme(!theme);
               console.log(theme);
@@ -59,7 +59,7 @@ const Navbar = () => {
             className="cursor-pointer lg:px-10 px-6 lg:py-2 py-1.5 text-white font-medium rounded-full bg-[#21BCBE]"
           >
             Dark Theme
-          </Button>
+          </Button> */}
             <Popover>
               <PopoverTrigger>
                 {" "}
