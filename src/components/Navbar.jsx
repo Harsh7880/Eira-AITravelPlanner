@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import EiRa from "../assets/EiRa1.png";
 
 import { useContext } from "react";
-import ThemeContext from "../context/themeContext";
+import ThemeContext from "../context/ThemeContext";
 
 import { FcGoogle } from "react-icons/fc";
 import useGetUserData from "../hooks/useGetUserData";
