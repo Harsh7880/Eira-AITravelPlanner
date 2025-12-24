@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI("AIzaSyDqmc9g6r52tR3p7FeXeRwtQuteGqBlvZA");
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
+  model: "models/gemini-2.5-flash",
 });
 
 const generationConfig = {
@@ -17,7 +17,7 @@ const generationConfig = {
 export const chatSession = model.startChat({
   generationConfig,
 
-  history: [
+history: [
     {
       role: "user",
       parts: [
